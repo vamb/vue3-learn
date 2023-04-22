@@ -22,7 +22,7 @@
 
     <!--  v-for  -->
     <ul>
-      <li v-for="item in arrList" :key="item.key">
+      <li v-for="(item, idx) in arrList" :key="`list-opt-${idx}`">
         {{ item.name }}
       </li>
     </ul>
