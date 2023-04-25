@@ -26,16 +26,23 @@
         {{ item.name }}
       </li>
     </ul>
+
+    <a-button type="primary">PPP</a-button>
   </div>
 </template>
 
 <script>
+import { Button } from 'ant-design-vue'
+
 export default {
+  components: {
+    AButton: Button,
+  },
   name: 'HelloWorld',
   data() {
     return {
       msg: 'test message',
-      rawHtml: "<a href='http://www.baidu.com'>百度</a>",
+      rawHtml: "<a href='http://www.baidu.com' target='_blank'>百度</a>",
       dynamicId: 10001,
       flag1: false,
       flag2: false,
