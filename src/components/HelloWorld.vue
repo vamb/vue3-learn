@@ -137,11 +137,10 @@ export default {
       },
       deep: true, // 是否开启深度监听，默认false
     },
+    /**
+     * 这个方法可以精确的对对象里面的够一个属性进行深度监听
+     */
     "person.age": {
-      /**
-       * 只要这个对象的任何属性变化了，那都会触发handler方法
-       * 不建议用这个方法
-       */
       handler: function (newVal, oldVal) { //需要具体执行的方法
         console.log('person.age handle newVal, oldVal', newVal, oldVal)
       },
