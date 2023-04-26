@@ -46,6 +46,18 @@
       <div>{{`fullname: ${fullName};`}}</div>
     </div>
   </div>
+
+  <!-- 动态改变添加这个dom元素绑定的class，蛮有用的 -->
+  <div
+    class="static" :class="{ active: isActive, 'text-danger': hasError }"
+  >test demo unit</div>
+
+  <div style="margin-bottom: 10px">
+    <a-button type="primary" @click="watchVal=watchVal+1" style="margin-right: 10px">watchVal</a-button><span>{{watchVal}}</span>
+  </div>
+  <div>
+    <a-button type="primary" @click="person.age=person.age+1" style="margin-right: 10px">person age</a-button><span>{{person.age}}</span>
+  </div>
 </template>
 
 <script>
@@ -79,7 +91,13 @@ export default {
         { id: 3, name: 'test3', key: 3 },
       ],
       firstName: 'John',
-      lastName: 'Doe'
+      lastName: 'Doe',
+      isActive: true,
+      hasError: true,
+      watchVal: 1,
+      person: {
+        age: 1
+      }
     }
   },
   // 计算属性，依赖于其他value，有点useMemo的味道
@@ -102,6 +120,38 @@ export default {
       }
     }
   },
+  /**
+   * computed 用于计算属性，watch用户监听某一个值是否变化，如果变化了就去执行相应的方法
+   * 执行的方法定义在methods里面
+   * newVal记录了改变后的值
+   * oldVal记录了改变前的值
+   */
+  watch: {
+    person: {
+      /**
+       * 只要这个对象的任何属性变化了，那都会触发handler方法
+       * 不建议用这个方法
+       */
+      handler: function (newVal, oldVal) { //需要具体执行的方法
+        console.log('person handle newVal, oldVal', newVal, oldVal)
+      },
+      deep: true, // 是否开启深度监听，默认false
+    },
+    "person.age": {
+      /**
+       * 只要这个对象的任何属性变化了，那都会触发handler方法
+       * 不建议用这个方法
+       */
+      handler: function (newVal, oldVal) { //需要具体执行的方法
+        console.log('person.age handle newVal, oldVal', newVal, oldVal)
+      },
+      deep: true, // 是否开启深度监听，默认false
+    },
+    // 浅层监听，用于监听数据结构不复杂的属性
+    watchVal(newVal, oldVal) {
+      console.log('newVal, oldVal', newVal, oldVal)
+    },
+  },
   created() {
     // 每个实例都有了自己的预置防抖的处理函数
     this.debouncedClick = debounce(this.click, 500)
@@ -116,8 +166,6 @@ export default {
     // 清除掉防抖计时器
     this.debouncedClick.cancel()
   },
-
-
   // Vue 自动为 methods 中的方法绑定了永远指向组件实例的 this。这确保了方法在作为事件监听器或回调函数时始终保持正确的 this。
   /**
    * 你不应该在定义 methods 时使用箭头函数，因为箭头函数没有自己的 this 上下文。
