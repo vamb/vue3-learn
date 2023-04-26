@@ -32,12 +32,18 @@
         {{ item.name }}
       </li>
     </ul>
+    <div>{{ `hasArrListContent: ${hasArrListContent}` }}</div>
 
     <div class="btn-group">
       <!-- v-on绑定事件 -->
       <a-button type="primary" v-on:click="clickPBtn">PPP</a-button>
       <!--  v-on简写 + 绑定动态方法  -->
       <a-button type="primary" @[qBtnEvent]="clickQBtn">{{`QQQ - ${qBtnEvent}`}}</a-button>
+    </div>
+    <div class="label-display">
+      <div>{{`firstname: ${firstName};`}}</div>
+      <div>{{`lastname: ${lastName};`}}</div>
+      <div>{{`fullname: ${fullName};`}}</div>
     </div>
   </div>
 </template>
@@ -71,7 +77,29 @@ export default {
         { id: 1, name: 'test1', key: 1 },
         { id: 2, name: 'test2', key: 2 },
         { id: 3, name: 'test3', key: 3 },
-      ]
+      ],
+      firstName: 'John',
+      lastName: 'Doe'
+    }
+  },
+  // 计算属性，依赖于其他value，有点useMemo的味道
+  /**
+   * 响应式依赖
+   */
+  computed: {
+    hasArrListContent() {
+      return this.arrList.length> 0? 'Yes': 'No'
+    },
+    fullName: {
+      // getter
+      get() {
+        return this.firstName + ' ' + this.lastName
+      },
+      // setter
+      set(newValue) {
+        // 注意：我们这里使用的是解构赋值语法
+        [this.firstName, this.lastName] = newValue.split(' ')
+      }
     }
   },
   created() {
@@ -88,6 +116,8 @@ export default {
     // 清除掉防抖计时器
     this.debouncedClick.cancel()
   },
+
+
   // Vue 自动为 methods 中的方法绑定了永远指向组件实例的 this。这确保了方法在作为事件监听器或回调函数时始终保持正确的 this。
   /**
    * 你不应该在定义 methods 时使用箭头函数，因为箭头函数没有自己的 this 上下文。
@@ -125,7 +155,7 @@ export default {
   a {
     color: #42b983;
   }
-  .btn-group {
+  .btn-group, .label-display {
     display: flex;
     flex-direction: row;
     gap: 10px;
