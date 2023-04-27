@@ -55,20 +55,36 @@
   <div style="margin-bottom: 10px">
     <a-button type="primary" @click="watchVal=watchVal+1" style="margin-right: 10px">watchVal</a-button><span>{{watchVal}}</span>
   </div>
-  <div>
+  <div style="margin-bottom: 10px">
     <a-button type="primary" @click="person.age=person.age+1" style="margin-right: 10px">person age</a-button><span>{{person.age}}</span>
   </div>
+  <div style="margin-bottom: 10px;display: flex;flex-direction: row;gap: 10px;justify-content: center;">
+    <input v-model="testInput" placeholder="please input" /><div style="margin-left: 10px">{{ testInput }}</div>
+  </div>
+  <div class="sf-btn-group">
+    <SFBtn />
+    <SFBtn />
+    <SFBtn />
+    <SFBtn />
+    <SFBtn />
+    <SFBtn />
+  </div>
+  <BlogPost title="My journey with Vue" />
+  <BlogPost title="Blogging with Vue" />
 </template>
 
 <script>
 import { Button } from 'ant-design-vue'
 // import { nextTick } from 'vue' //这个方法是全局使用的
 import { debounce } from 'lodash-es'
+import SFBtn from "@/components/SFBtn";
+import BlogPost from "@/components/BlogPost";
 
 export default {
   name: 'HelloWorld',
   components: {
     AButton: Button,
+    SFBtn, BlogPost
   },
   // VUE 对于数据结构的深层数据也是支持响应的，不会像reactJs那用样需要先序列化
   data() {
@@ -97,7 +113,8 @@ export default {
       watchVal: 1,
       person: {
         age: 1
-      }
+      },
+      testInput: ''
     }
   },
   // 计算属性，依赖于其他value，有点useMemo的味道
@@ -202,7 +219,7 @@ export default {
   a {
     color: #42b983;
   }
-  .btn-group, .label-display {
+  .btn-group, .label-display, .sf-btn-group {
     display: flex;
     flex-direction: row;
     gap: 10px;
