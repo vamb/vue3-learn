@@ -25,13 +25,19 @@ const routes = [
   {
     path: '/news',
     name: 'news',
-    component: () => import('@/pages/NewsView')
+    component: () => import('@/pages/NewsView'),
+    children: [
+      {
+        /**
+         * 二级导航的页面不用加 '/' , 也不需要把父的路由拼上
+         */
+        path: 'news-detail/:name',
+        name: 'newsDetail',
+        component: () => import('@/pages/NewsDetail')
+      }
+    ]
   },
-  {
-    path: '/news-detail/:name',
-    name: 'newsDetail',
-    component: () => import('@/pages/NewsDetail')
-  }
+
 ]
 
 const router = createRouter({

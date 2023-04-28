@@ -3,7 +3,11 @@
 </template>
 
 <script>
-
+export default {
+  mounted() {
+    // console.log($route)
+  }
+}
 </script>
 
 <style scoped>
