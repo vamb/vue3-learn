@@ -5,6 +5,9 @@ const api = {
   // 诚品详情地址
   getChengpin() {
     return requests.get(path.baseUrl + path.chengpin)
+  },
+  generatorList() {
+    return requests.get(path.baseUrl + path.generatorList)
   }
 }
 
