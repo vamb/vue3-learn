@@ -71,6 +71,8 @@
   </div>
   <BlogPost title="My journey with Vue" />
   <BlogPost title="Blogging with Vue" />
+  <my-component v-bind:title="myComponentTitle" :names="myComponentNames" />
+  <my-component-v2 @onEvent="getDataHandler" />
 </template>
 
 <script>
@@ -79,12 +81,14 @@ import { Button } from 'ant-design-vue'
 import { debounce } from 'lodash-es'
 import SFBtn from "@/components/SFBtn";
 import BlogPost from "@/components/BlogPost";
+import MyComponent from "@/components/MyComponent";
+import MyComponentV2 from "@/components/MyComponentV2";
 
 export default {
   name: 'HelloWorld',
   components: {
-    AButton: Button,
-    SFBtn, BlogPost
+    AButton: Button, SFBtn, BlogPost,
+    MyComponent, MyComponentV2
   },
   // VUE 对于数据结构的深层数据也是支持响应的，不会像reactJs那用样需要先序列化
   data() {
@@ -114,7 +118,11 @@ export default {
       person: {
         age: 1
       },
-      testInput: ''
+      testInput: '',
+      myComponentTitle: 'new title',
+      myComponentNames: [
+        'm-p-name1', 'm-p-name2', 'm-p-name3', 'm-p-name4',
+      ]
     }
   },
   // 计算属性，依赖于其他value，有点useMemo的味道
@@ -199,6 +207,9 @@ export default {
     click() {
       // 此方法将拥有独立的防抖空间，不会互相影响
       // ... 对点击的响应 ...
+    },
+    getDataHandler(data) {
+      console.log('myComponentV2 message data', data)
     }
   }
 }
