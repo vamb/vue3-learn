@@ -74,6 +74,7 @@
   <my-component v-bind:title="myComponentTitle" :names="myComponentNames" />
   <my-component-v2 @onEvent="getDataHandler" />
   <MyCompV3Axios />
+  <my-comp-v4-proxy />
 </template>
 
 <script>
@@ -85,12 +86,13 @@ import BlogPost from "@/components/BlogPost";
 import MyComponent from "@/components/MyComponent";
 import MyComponentV2 from "@/components/MyComponentV2";
 import MyCompV3Axios from "@/components/MyCompV3Axios";
+import MyCompV4Proxy from "@/components/MyCompV4Proxy";
 
 export default {
   name: 'HelloWorld',
   components: {
     AButton: Button, SFBtn, BlogPost,
-    MyComponent, MyComponentV2, MyCompV3Axios
+    MyComponent, MyComponentV2, MyCompV3Axios, MyCompV4Proxy
   },
   // VUE 对于数据结构的深层数据也是支持响应的，不会像reactJs那用样需要先序列化
   data() {
