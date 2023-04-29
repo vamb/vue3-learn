@@ -37,7 +37,11 @@ const routes = [
       }
     ]
   },
-
+  {
+    path: '/newFeature',
+    name: 'newFeature',
+    component: () => import('@/pages/Feature')
+  }
 ]
 
 const router = createRouter({
