@@ -40,7 +40,7 @@ const routes = [
   {
     path: '/newFeature',
     name: 'newFeature',
-    component: () => import('@/pages/Feature')
+    component: () => import('@/pages/Feature/index')
   }
 ]
 
