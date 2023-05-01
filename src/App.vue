@@ -7,7 +7,8 @@
     <router-link to="/about">关于</router-link>
     <router-link to="/hello">欢迎</router-link>
     <router-link to="/news">新闻</router-link>
-    <router-link to="/newFeature">新特性</router-link>
+    <router-link to="/newFeature">setup</router-link>
+    <router-link to="/lifecycleSetup">setup生命周期</router-link>
   </div>
   <router-view></router-view>
 </template>

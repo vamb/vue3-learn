@@ -41,6 +41,11 @@ const routes = [
     path: '/newFeature',
     name: 'newFeature',
     component: () => import('@/pages/Feature/index')
+  },
+  {
+    path: '/lifecycleSetup',
+    name: 'lifecycleSetup',
+    component: () => import('@/pages/lifecycleSetup/index')
   }
 ]
 
