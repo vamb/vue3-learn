@@ -1,5 +1,4 @@
-import { createRouter,
-  createWebHashHistory,
+import { createRouter, createWebHashHistory,
   // createWebHistory
 } from 'vue-router'
 import HomeView from '@/pages/HomeView'

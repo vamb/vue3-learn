@@ -1,11 +1,11 @@
 import { createApp } from 'vue'
-import App from './App.vue';
+import NewApp from './NewApp.vue';
 import 'ant-design-vue/dist/antd.css';
 import axios from "axios";
 import router from "@/router";
 import store from '@/store'
 
-const app = createApp(App)
+const app = createApp(NewApp)
 app.config.productionTip = false;
 app.config.globalProperties.$axios = axios //将axios方法挂载到全局
 
