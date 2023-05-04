@@ -2,25 +2,26 @@
 <!--  <img alt="Vue logo" src="./assets/logo.png">-->
 <!--  <HelloWorld msg="Welcome to Your Vue.js App"/>-->
 <!-- 路由的显示入口 -->
-  <div class="router-content">
-    <router-link to="/">首页</router-link>
-    <router-link to="/about">关于</router-link>
-    <router-link to="/hello">欢迎</router-link>
-    <router-link to="/news">新闻</router-link>
-    <router-link to="/newFeature">setup</router-link>
-    <router-link to="/lifecycleSetup">setup生命周期</router-link>
-  </div>
-  <router-view></router-view>
+<!--  <div class="router-content">-->
+<!--    <router-link to="/">首页</router-link>-->
+<!--    <router-link to="/about">关于</router-link>-->
+<!--    <router-link to="/hello">欢迎</router-link>-->
+<!--    <router-link to="/news">新闻</router-link>-->
+<!--    <router-link to="/newFeature">setup</router-link>-->
+<!--    <router-link to="/lifecycleSetup">setup生命周期</router-link>-->
+<!--  </div>-->
+<!--  <router-view></router-view>-->
+  <HelloWorld />
 </template>
 
 <script>
-// import HelloWorld from './components/HelloWorld.vue'
+import HelloWorld from './components/HelloWorld.vue'
 
 export default {
   name: 'App',
-  // components: {
-  //   HelloWorld
-  // }
+  components: {
+    HelloWorld
+  }
 }
 </script>
 

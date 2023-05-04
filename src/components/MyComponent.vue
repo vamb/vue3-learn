@@ -1,5 +1,5 @@
 <template>
-  <div>{{ `MyComponent: ${title}` }}</div>
+  <div>{{ `MyComponent: ${selfTitle}` }}</div>
   <ul>
     <li
       v-for="(name, idx) in names"
@@ -25,6 +25,14 @@ export default {
         return []
       }
     }
+  },
+  data() {
+    return {
+      selfTitle: null
+    }
+  },
+  mounted() {
+    this.selfTitle = this.title + " after mounted"
   }
 }
 </script>
