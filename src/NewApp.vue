@@ -127,7 +127,7 @@ export default defineComponent({
 });
 </script>
 
-<style>
+<style scoped>
 .page-content {
   flex-grow: 1;
 }

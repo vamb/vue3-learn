@@ -1,6 +1,6 @@
 import { createApp } from 'vue'
-// import NewApp from './NewApp.vue';
-import App from './App.vue'
+import App from './NewApp.vue';
+// import App from './App.vue'
 import 'ant-design-vue/dist/antd.css';
 import axios from "axios";
 import router from "@/router";
